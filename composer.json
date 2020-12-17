@@ -1,0 +1,14 @@
+{
+    "name":        "artsems/musement-test",
+    "description": "Test task for Musement with Vanilla PHP.",
+    "type":        "project",
+
+    "authors": [
+        {
+            "name":  "Artsem Shulga",
+            "email": "artsems96.workspace@gmail.com"
+        }
+    ],
+
+    "require": {}
+}

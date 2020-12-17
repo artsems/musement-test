@@ -12,7 +12,7 @@ class MusementApiClient extends ApiClient
     {
         parent::__construct();
 
-        $this->baseUri = getenv('MUSEMENT_API_BASE_URI') ?? 'https://api.musement.com/api';
+        $this->baseUri = getenv('MUSEMENT_API_BASE_URI') ?: 'https://api.musement.com/api';
     }
 
     public function request(string $uri, array $parameters = []): ?ResponseInterface

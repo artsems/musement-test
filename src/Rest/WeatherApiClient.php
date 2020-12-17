@@ -18,8 +18,8 @@ class WeatherApiClient extends ApiClient
     {
         parent::__construct();
 
-        $this->baseUri = getenv('WEATHER_API_BASE_URI') ?? 'http://api.weatherapi.com';
-        $this->apiKey  = getenv('WEATHER_API_KEY') ?? '0703b9dc9b3c48868d7212338201712';
+        $this->baseUri = getenv('WEATHER_API_BASE_URI') ?: 'http://api.weatherapi.com';
+        $this->apiKey  = getenv('WEATHER_API_KEY') ?: '0703b9dc9b3c48868d7212338201712';
     }
 
     public function request(string $uri, array $parameters = []): ?ResponseInterface

@@ -14,5 +14,5 @@ abstract class ApiClient implements ApiClientInterface
         $this->client = new Client();
     }
 
-    abstract public function request(string $uri): ?ResponseInterface;
+    abstract public function request(string $uri, array $parameters = []): ?ResponseInterface;
 }

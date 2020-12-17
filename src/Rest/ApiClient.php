@@ -9,6 +9,8 @@ abstract class ApiClient implements ApiClientInterface
 {
     protected Client $client;
 
+    protected string $baseUri;
+
     public function __construct()
     {
         $this->client = new Client();

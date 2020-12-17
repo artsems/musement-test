@@ -12,14 +12,20 @@ use Psr\Http\Message\ResponseInterface;
 
 class WeatherApiClient extends ApiClient
 {
-    // TODO: move to dotenv
-    private const BASE_URI = 'http://api.weatherapi.com';
-    private const API_KEY  = '0703b9dc9b3c48868d7212338201712';
+    private string $apiKey;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->baseUri = getenv('WEATHER_API_BASE_URI') ?? 'http://api.weatherapi.com';
+        $this->apiKey  = getenv('WEATHER_API_KEY') ?? '0703b9dc9b3c48868d7212338201712';
+    }
 
     public function request(string $uri, array $parameters = []): ?ResponseInterface
     {
         try {
-            return $this->client->get(self::BASE_URI . $uri);
+            return $this->client->get($this->baseUri . $uri);
         } catch (GuzzleException $guzzleException) {
             Printer::error($guzzleException->getMessage(), 'GUZZLE ERROR');
 
@@ -29,8 +35,8 @@ class WeatherApiClient extends ApiClient
 
     public function forecast2d(array $cities): array
     {
-        $uri  = self::BASE_URI . '/v1/forecast.json';
-        $uri .= '?key=' . self::API_KEY;
+        $uri  = "{$this->baseUri}/v1/forecast.json";
+        $uri .= "?key={$this->apiKey}";
         $uri .= '&days=2';
 
         $requests = function ($cities) use ($uri) {

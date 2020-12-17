@@ -10,5 +10,15 @@
         }
     ],
 
-    "require": {}
+    "autoload": {
+        "psr-4": {"Musement\\": "src/"}
+    },
+
+    "config": {
+        "optimize-autoloader": true
+    },
+
+    "require": {
+        "guzzlehttp/guzzle": "7.0"
+    }
 }

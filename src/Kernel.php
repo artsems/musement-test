@@ -20,7 +20,7 @@ class Kernel
         }
     }
 
-    private function cities(): array
+    public function cities(): array
     {
         $cities = (new MusementApiClient())->request('/v3/cities');
 
@@ -31,7 +31,7 @@ class Kernel
         return [];
     }
 
-    private function weathers(array $cities): array
+    public function weathers(array $cities): array
     {
         if (empty($cities)) {
             return [];

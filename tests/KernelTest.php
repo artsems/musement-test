@@ -13,27 +13,23 @@ final class KernelTest extends TestCase
         $this->kernel = new Kernel();
     }
 
-    public function testCities()
+    public function testCities(): void
     {
         $cities = $this->kernel->cities();
 
         self::assertIsArray($cities);
         self::assertNotEmpty($cities);
 
-        $city = reset($cities);
-
-        $this->assertArrayStructure(['name', 'latitude', 'longitude'], array_keys($city));
+        $this->assertArrayStructure(['name', 'latitude', 'longitude'], array_keys($cities[0]));
     }
 
-    public function testWeathers()
+    public function testWeathers(): void
     {
         $weathers = $this->kernel->weathers($this->kernel->cities());
 
         self::assertIsArray($weathers);
         self::assertNotEmpty($weathers);
 
-        $weather = reset($weathers);
-
-        $this->assertIsString($weather);
+        $this->assertIsString($weathers[0]);
     }
 }

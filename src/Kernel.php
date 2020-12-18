@@ -10,7 +10,7 @@ use Psr\Http\Message\ResponseInterface;
 
 class Kernel
 {
-    public function handle()
+    public function handle(): void
     {
         $cities   = $this->cities();
         $weathers = $this->weathers($cities);
@@ -20,6 +20,7 @@ class Kernel
         }
     }
 
+    /** @return array[] */
     public function cities(): array
     {
         $cities = (new MusementApiClient())->request('/v3/cities');
@@ -31,6 +32,11 @@ class Kernel
         return [];
     }
 
+    /**
+     * @param array[] $cities
+     *
+     * @return string[]
+     */
     public function weathers(array $cities): array
     {
         if (empty($cities)) {

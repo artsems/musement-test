@@ -15,6 +15,12 @@ class MusementApiClient extends ApiClient
         $this->baseUri = getenv('MUSEMENT_API_BASE_URI') ?: 'https://api.musement.com/api';
     }
 
+    /**
+     * @param string   $uri
+     * @param string[] $parameters
+     *
+     * @return ResponseInterface|null
+     */
     public function request(string $uri, array $parameters = []): ?ResponseInterface
     {
         try {

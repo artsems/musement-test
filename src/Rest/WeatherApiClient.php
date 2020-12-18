@@ -22,6 +22,12 @@ class WeatherApiClient extends ApiClient
         $this->apiKey  = getenv('WEATHER_API_KEY') ?: '0703b9dc9b3c48868d7212338201712';
     }
 
+    /**
+     * @param string   $uri
+     * @param string[] $parameters
+     *
+     * @return ResponseInterface|null
+     */
     public function request(string $uri, array $parameters = []): ?ResponseInterface
     {
         try {
@@ -33,6 +39,11 @@ class WeatherApiClient extends ApiClient
         }
     }
 
+    /**
+     * @param array[] $cities
+     *
+     * @return string[]
+     */
     public function forecast2d(array $cities): array
     {
         $uri  = "{$this->baseUri}/v1/forecast.json";

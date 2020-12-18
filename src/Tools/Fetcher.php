@@ -6,6 +6,11 @@ use Psr\Http\Message\ResponseInterface;
 
 class Fetcher
 {
+    /**
+     * @param ResponseInterface $response
+     *
+     * @return array[]
+     */
     public static function fetchCities(ResponseInterface $response): array
     {
         $array = $response->getBody()->getContents();
